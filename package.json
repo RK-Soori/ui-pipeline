@@ -1,18 +1,21 @@
 {
   "name": "ui-pipeline",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Production-grade 6-stage frontend UI/UX design pipeline skill for AI agents (Claude Code, Cursor, Antigravity, Gemini, Windsurf, Copilot)",
-  "main": "scripts/install.py",
+  "main": "scripts/install.js",
   "bin": {
-    "ui-pipeline": "./scripts/install.sh"
+    "ui-pipeline": "./bin/ui-pipeline.js"
   },
   "scripts": {
-    "install:all": "python scripts/install.py --platform all",
-    "install:cursor": "python scripts/install.py --platform cursor",
-    "install:claude": "python scripts/install.py --platform claude",
-    "install:gemini": "python scripts/install.py --platform gemini",
-    "install:windsurf": "python scripts/install.py --platform windsurf",
-    "test": "python scripts/install.py --test"
+    "install:all": "node scripts/install.js --platform all",
+    "install:cursor": "node scripts/install.js --platform cursor",
+    "install:claude": "node scripts/install.js --platform claude",
+    "install:gemini": "node scripts/install.js --platform gemini",
+    "install:antigravity": "node scripts/install.js --platform antigravity",
+    "install:windsurf": "node scripts/install.js --platform windsurf",
+    "install:copilot": "node scripts/install.js --platform copilot",
+    "install:universal": "node scripts/install.js --platform universal",
+    "test": "node scripts/install.js --test && python scripts/install.py --test"
   },
   "keywords": [
     "ai-agent",
@@ -21,6 +24,7 @@
     "antigravity",
     "gemini",
     "windsurf",
+    "copilot",
     "frontend-design",
     "design-system",
     "anti-slop",

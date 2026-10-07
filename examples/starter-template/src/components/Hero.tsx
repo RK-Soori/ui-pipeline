@@ -102,7 +102,7 @@ export function Hero() {
             </div>
 
             <div className="grid grid-cols-2 gap-4">
-              <div className="p-3 bg-zinc-950/70 border border-zinc-800 rounded-lg">
+              <div className={`p-3 bg-zinc-950/70 border border-zinc-800 ${THEME_TOKENS.radius}`}>
                 <span className="text-[11px] text-zinc-400 block">VRAM Utilization</span>
                 <span className="text-2xl font-mono font-bold text-zinc-100">76.2 GB</span>
                 <div className="w-full bg-zinc-800 h-1.5 rounded-full mt-2 overflow-hidden">
@@ -110,7 +110,7 @@ export function Hero() {
                 </div>
               </div>
 
-              <div className="p-3 bg-zinc-950/70 border border-zinc-800 rounded-lg">
+              <div className={`p-3 bg-zinc-950/70 border border-zinc-800 ${THEME_TOKENS.radius}`}>
                 <span className="text-[11px] text-zinc-400 block">Tensor Interconnect</span>
                 <span className="text-2xl font-mono font-bold text-zinc-100">894 GB/s</span>
                 <div className="w-full bg-zinc-800 h-1.5 rounded-full mt-2 overflow-hidden">
@@ -119,7 +119,7 @@ export function Hero() {
               </div>
             </div>
 
-            <div className="text-xs font-mono text-zinc-400 bg-zinc-950/80 p-3 rounded-lg border border-zinc-800/80">
+            <div className={`text-xs font-mono text-zinc-400 bg-zinc-950/80 p-3 ${THEME_TOKENS.radius} border border-zinc-800/80`}>
               <span className="text-emerald-400">$</span> telemetry trace --cluster gpu-prod-8x
               <br />
               <span className="text-zinc-500">[0.02ms]</span> Shard sync acknowledged across 64 nodes.

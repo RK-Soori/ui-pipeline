@@ -4,11 +4,11 @@ import { THEME_TOKENS } from "../components/ThemeTokens";
 
 export default function Page() {
   return (
-    <main className={`min-h-screen ${THEME_TOKENS.surface.bg} text-zinc-100 flex flex-col font-sans selection:bg-emerald-500/20 selection:text-emerald-300`}>
+    <main className={`min-h-[100dvh] ${THEME_TOKENS.surface.bg} text-zinc-100 flex flex-col font-sans selection:bg-emerald-500/20 selection:text-emerald-300`}>
       {/* Desktop Navigation (Single line, max height 72px) */}
       <header className="fixed top-0 inset-x-0 h-16 border-b border-zinc-800/80 bg-zinc-950/80 backdrop-blur-md z-50 flex items-center justify-between px-6 lg:px-12">
         <div className="flex items-center gap-3">
-          <div className="w-8 h-8 rounded-lg bg-emerald-500/20 border border-emerald-500/40 flex items-center justify-center font-mono font-bold text-emerald-400">
+          <div className={`w-8 h-8 ${THEME_TOKENS.radius} bg-emerald-500/20 border border-emerald-500/40 flex items-center justify-center font-mono font-bold text-emerald-400`}>
             UI
           </div>
           <span className="font-semibold tracking-tight text-sm text-zinc-100">

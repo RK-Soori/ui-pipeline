@@ -18,27 +18,46 @@ jobs:
         with:
           python-version: '3.11'
 
-      - name: Verify installer script
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Verify Python installer
         run: |
           python scripts/install.py --help
           python -m py_compile scripts/install.py
+          python scripts/install.py --test
 
-      - name: Verify skill file integrity
+      - name: Verify Node installer
         run: |
-          python -c "
-          import os
-          files = [
-            'SKILL.md',
-            '.agents/skills/ui-pipeline/SKILL.md',
-            '.claude/skills/ui-pipeline/SKILL.md',
-            '.cursor/rules/ui-pipeline.mdc',
-            '.cursorrules',
-            '.windsurfrules',
-            'CLAUDE.md',
-            'GEMINI.md',
-            'README.md'
-          ]
-          for f in files:
-            assert os.path.exists(f), f'Missing {f}'
-          print('All core platform rules verified.')
-          "
+          node scripts/install.js --help
+          node bin/ui-pipeline.js --help
+          node scripts/install.js --test
+
+      - name: Test installation into temporary directory
+        run: |
+          mkdir -p /tmp/ui-test-py /tmp/ui-test-node /tmp/ui-test-sh
+          python scripts/install.py --target /tmp/ui-test-py --platform all
+          node scripts/install.js --target /tmp/ui-test-node --platform all
+          bash scripts/install.sh all /tmp/ui-test-sh
+          test -f /tmp/ui-test-py/.cursorrules
+          test -f /tmp/ui-test-node/CLAUDE.md
+          test -f /tmp/ui-test-sh/.agents/skills/ui-pipeline/SKILL.md
+
+      - name: Validate JSON configuration files
+        run: |
+          node -e "JSON.parse(require('fs').readFileSync('package.json', 'utf8'));"
+          node -e "JSON.parse(require('fs').readFileSync('examples/starter-template/package.json', 'utf8'));"
+          node -e "JSON.parse(require('fs').readFileSync('examples/starter-template/tsconfig.json', 'utf8'));"
+
+      - name: Verify starter-template integrity
+        run: |
+          test -f examples/starter-template/src/app/layout.tsx
+          test -f examples/starter-template/src/app/page.tsx
+          test -f examples/starter-template/src/app/globals.css
+          test -f examples/starter-template/postcss.config.js
+          test -f examples/starter-template/tailwind.config.ts
+
+      - name: Run npm test suite
+        run: npm test

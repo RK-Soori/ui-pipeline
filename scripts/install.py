@@ -31,12 +31,17 @@ PLATFORMS = {
     "antigravity": [
         ("GEMINI.md", "GEMINI.md"),
         (".agents/skills/ui-pipeline/SKILL.md", ".agents/skills/ui-pipeline/SKILL.md"),
+        (".agents/skills/ui-pipeline/references/three-dials.md", ".agents/skills/ui-pipeline/references/three-dials.md"),
+        (".agents/skills/ui-pipeline/references/anti-slop-rules.md", ".agents/skills/ui-pipeline/references/anti-slop-rules.md"),
     ],
     "windsurf": [
         (".windsurfrules", ".windsurfrules"),
     ],
     "copilot": [
         (".github/copilot-instructions.md", ".github/copilot-instructions.md"),
+    ],
+    "universal": [
+        ("SKILL.md", "SKILL.md"),
     ],
 }
 
@@ -86,7 +91,7 @@ def main():
         "-p",
         type=str,
         default="all",
-        choices=["all", "cursor", "claude", "gemini", "antigravity", "windsurf", "copilot"],
+        choices=["all", "cursor", "claude", "gemini", "antigravity", "windsurf", "copilot", "universal"],
         help="Agent platform to install rules for (default: all)",
     )
     parser.add_argument(
@@ -121,9 +126,7 @@ def main():
             sys.exit(1)
 
     target_path = Path(args.target).resolve()
-    if not target_path.exists():
-        print(f"[-] Target directory does not exist: {target_path}")
-        sys.exit(1)
+    target_path.mkdir(parents=True, exist_ok=True)
 
     print(f"==================================================")
     print(f" UI Pipeline: Universal Cross-Platform Agent Installer")
@@ -131,7 +134,7 @@ def main():
     print(f"==================================================")
 
     targets = (
-        ["cursor", "claude", "gemini", "windsurf", "copilot"]
+        ["cursor", "claude", "antigravity", "windsurf", "copilot", "universal"]
         if args.platform == "all"
         else [args.platform]
     )

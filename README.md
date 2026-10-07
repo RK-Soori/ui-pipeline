@@ -164,21 +164,43 @@ Before outputting code or marking tasks complete, the agent verifies:
 
 ## Installation
 
-### 1. One-Line Python Installer (Recommended)
-You can install `ui-pipeline` into any existing codebase with the bundled script:
+### 1. Zero-Dependency CLI Installers (Node, Python, Bash, PowerShell)
 
+You can install `ui-pipeline` into any existing codebase with your preferred tooling:
+
+#### Via Node / npx (Zero dependencies required)
 ```bash
 # Clone the repository
 git clone https://github.com/RK-Soori/ui-pipeline.git
 
 # Install into current project for all platforms
+node ui-pipeline/scripts/install.js --target . --platform all
+
+# Or install for a specific platform only
+node ui-pipeline/scripts/install.js --target . --platform cursor
+node ui-pipeline/scripts/install.js --target . --platform claude
+node ui-pipeline/scripts/install.js --target . --platform antigravity
+node ui-pipeline/scripts/install.js --target . --platform windsurf
+node ui-pipeline/scripts/install.js --target . --platform copilot
+```
+
+#### Via Python
+```bash
+# Install into current project for all platforms
 python ui-pipeline/scripts/install.py --target . --platform all
 
 # Or install for a specific platform only
-python ui-pipeline/scripts/install.py --target . --platform cursor
-python ui-pipeline/scripts/install.py --target . --platform claude
-python ui-pipeline/scripts/install.py --target . --platform gemini
-python ui-pipeline/scripts/install.py --target . --platform windsurf
+python ui-pipeline/scripts/install.py --target . --platform antigravity
+```
+
+#### Via PowerShell (Windows)
+```powershell
+powershell -File ui-pipeline/scripts/install.ps1 -Platform all -Target .
+```
+
+#### Via Bash (macOS / Linux)
+```bash
+bash ui-pipeline/scripts/install.sh all .
 ```
 
 ### 2. Manual Platform Setup
@@ -212,6 +234,13 @@ Copy `.windsurfrules`:
 cp ui-pipeline/.windsurfrules your-project/.windsurfrules
 ```
 
+#### GitHub Copilot
+Copy `.github/copilot-instructions.md`:
+```bash
+mkdir -p your-project/.github
+cp ui-pipeline/.github/copilot-instructions.md your-project/.github/
+```
+
 ---
 
 ## Live Comparison: Without Skill vs. With `ui-pipeline`
@@ -237,11 +266,14 @@ open examples/before-and-after/index.html
 
 ## Starter Template
 
-A reference implementation is provided in [`examples/starter-template/`](examples/starter-template/):
+A production-ready reference implementation is provided in [`examples/starter-template/`](examples/starter-template/):
 - [`DESIGN.md`](examples/starter-template/DESIGN.md): Pre-calibrated token specification
-- [`Hero.tsx`](examples/starter-template/src/components/Hero.tsx): Production-grade Next.js + Tailwind + Motion hero component
-- [`ThemeTokens.ts`](examples/starter-template/src/components/ThemeTokens.ts): Type-safe theme configuration
-- [`page.tsx`](examples/starter-template/src/app/page.tsx): Complete layout with 72px nav and responsive section grids
+- [`src/app/layout.tsx`](examples/starter-template/src/app/layout.tsx): Next.js App Router root layout with metadata, viewport, and theme lock
+- [`src/app/page.tsx`](examples/starter-template/src/app/page.tsx): Complete layout with 72px nav and responsive section grids
+- [`src/app/globals.css`](examples/starter-template/src/app/globals.css): Tailwind base directives and theme CSS variables
+- [`src/components/Hero.tsx`](examples/starter-template/src/components/Hero.tsx): Production-grade Next.js + Tailwind + Motion hero component
+- [`src/components/ThemeTokens.ts`](examples/starter-template/src/components/ThemeTokens.ts): Type-safe theme configuration
+- [`postcss.config.js`](examples/starter-template/postcss.config.js) & [`tailwind.config.ts`](examples/starter-template/tailwind.config.ts): Complete build configurations
 
 ---
 
@@ -249,6 +281,9 @@ A reference implementation is provided in [`examples/starter-template/`](example
 
 Verify that all platform rules and paths are intact:
 ```bash
+npm test
+# Or test individual engines directly:
+node scripts/install.js --test
 python scripts/install.py --test
 ```
 

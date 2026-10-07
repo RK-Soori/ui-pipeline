@@ -17,7 +17,7 @@
 - **Rules**:
   - Cards: `rounded-xl`
   - Buttons: `rounded-xl`
-  - Badges: `rounded-lg`
+  - Badges: `rounded-xl`
   - Modals: `rounded-xl`
   - Inputs: `rounded-xl`
   *(No mixing square cards with pill buttons)*
