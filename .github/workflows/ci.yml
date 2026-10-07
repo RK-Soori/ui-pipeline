@@ -1,0 +1,44 @@
+name: CI
+
+on:
+  push:
+    branches: [ main, master ]
+  pull_request:
+    branches: [ main, master ]
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Verify installer script
+        run: |
+          python scripts/install.py --help
+          python -m py_compile scripts/install.py
+
+      - name: Verify skill file integrity
+        run: |
+          python -c "
+          import os
+          files = [
+            'SKILL.md',
+            '.agents/skills/ui-pipeline/SKILL.md',
+            '.claude/skills/ui-pipeline/SKILL.md',
+            '.cursor/rules/ui-pipeline.mdc',
+            '.cursorrules',
+            '.windsurfrules',
+            'CLAUDE.md',
+            'GEMINI.md',
+            'README.md'
+          ]
+          for f in files:
+            assert os.path.exists(f), f'Missing {f}'
+          print('All core platform rules verified.')
+          "

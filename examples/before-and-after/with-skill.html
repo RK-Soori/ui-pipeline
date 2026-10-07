@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>With compact-ui-designer Skill - Systems Portfolio (with Contextual 3D)</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600;700&family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    body { font-family: 'Geist', sans-serif; }
+    code, .font-mono { font-family: 'Geist Mono', monospace; }
+  </style>
+</head>
+<body class="min-h-[100dvh] bg-[#0c0d0e] text-[#ededed] antialiased selection:bg-emerald-500/20 selection:text-emerald-300">
+  <div class="max-w-5xl mx-auto px-6">
+    
+    <!-- Navigation: Strictly single-line, max height 64px -->
+    <header class="h-16 flex items-center justify-between border-b border-[#232528]">
+      <div class="flex items-center gap-3">
+        <span class="w-2.5 h-2.5 rounded-full bg-emerald-500 animate-pulse"></span>
+        <span class="text-sm font-medium tracking-tight text-[#f4f4f5]">Alex Mercer</span>
+        <span class="text-xs text-[#71717a] hidden sm:inline">Systems & Infrastructure</span>
+      </div>
+
+      <nav class="flex items-center gap-6 text-xs text-[#a1a1aa]">
+        <a href="#work" class="hover:text-white transition-colors">Work</a>
+        <a href="#stack" class="hover:text-white transition-colors">Stack</a>
+        <a 
+          href="mailto:alex@mercer.dev" 
+          class="text-white hover:text-emerald-400 transition-colors font-medium"
+        >
+          Contact
+        </a>
+      </nav>
+    </header>
+
+    <!-- Hero Viewport: Asymmetric Split (Anti-Center Bias) -->
+    <section class="pt-20 pb-16 grid grid-cols-1 md:grid-cols-12 gap-12 items-start border-b border-[#232528]">
+      
+      <!-- Left Column (Text Budget: Max 4 elements) -->
+      <div class="md:col-span-7 space-y-6">
+        <div class="inline-flex items-center gap-2 px-2.5 py-1 rounded-md bg-[#18191b] border border-[#27282b] text-xs text-[#a1a1aa]">
+          <span class="w-1.5 h-1.5 rounded-full bg-emerald-400"></span>
+          Available for Q2 Staff Engineering roles
+        </div>
+
+        <!-- Headline: Max 2 lines, tight leading, zero em-dashes -->
+        <h1 class="text-3xl sm:text-4xl font-semibold tracking-tight text-white leading-tight">
+          Building distributed engines and low-latency data pipelines.
+        </h1>
+
+        <!-- Subtext: Max 20 words -->
+        <p class="text-sm text-[#a1a1aa] leading-relaxed max-w-[55ch]">
+          Ten years architecting storage kernels, eBPF telemetry, and mission-critical cloud infrastructure at hyperscale.
+        </p>
+
+        <!-- CTAs: Primary + Secondary, strictly single-line, tactile click feel -->
+        <div class="flex items-center gap-3 pt-2">
+          <a
+            href="#work"
+            class="px-4 py-2 rounded-lg bg-emerald-500 hover:bg-emerald-400 active:scale-[0.98] text-[#0c0d0e] text-xs font-semibold tracking-tight transition-all shadow-sm"
+          >
+            Inspect Work
+          </a>
+
+          <a
+            href="https://github.com"
+            target="_blank"
+            rel="noreferrer"
+            class="px-4 py-2 rounded-lg bg-[#18191b] hover:bg-[#202124] active:scale-[0.98] border border-[#27282b] text-xs text-[#d4d4d8] font-medium transition-all"
+          >
+            GitHub Profile
+          </a>
+        </div>
+      </div>
+
+      <!-- Right Column: Contextual Interactive 3D Card (Engineered with Skill Discipline) -->
+      <div id="telemetry-card" class="md:col-span-5 bg-[#131416] border border-[#232528] rounded-lg p-5 text-xs font-mono space-y-4 relative overflow-hidden group">
+        
+        <div class="flex items-center justify-between border-b border-[#232528] pb-3 text-[#71717a]">
+          <span class="flex items-center gap-2">
+            <span class="w-2 h-2 rounded-full bg-emerald-400"></span>
+            RAFT CLUSTER TOPOLOGY
+          </span>
+          <span class="text-emerald-400 text-[11px]">3D INTERACTIVE</span>
+        </div>
+
+        <!-- Contextual 3D Canvas: Distributed Raft Node Cluster -->
+        <div class="relative w-full h-44 rounded bg-[#0c0d0e] border border-[#232528] flex items-center justify-center overflow-hidden">
+          <canvas id="systems-3d-canvas" class="w-full h-full cursor-grab active:cursor-grabbing"></canvas>
+          
+          <div class="absolute bottom-2 left-2 text-[10px] text-[#71717a] bg-[#131416]/90 px-2 py-0.5 rounded border border-[#27282b] pointer-events-none">
+            Hover to rotate cluster
+          </div>
+          <div id="perf-badge" class="absolute top-2 right-2 text-[10px] text-emerald-400/90 font-mono bg-[#131416]/90 px-2 py-0.5 rounded border border-[#27282b] pointer-events-none">
+            60 FPS • Throttled
+          </div>
+        </div>
+
+        <div class="space-y-2 text-[#a1a1aa] pt-1">
+          <div class="flex justify-between">
+            <span class="text-[#71717a]">Cluster State</span>
+            <span class="text-white">5-Node Quorum Stable</span>
+          </div>
+          <div class="flex justify-between">
+            <span class="text-[#71717a]">Consensus Tick</span>
+            <span class="text-white">12ms Heartbeat</span>
+          </div>
+          <div class="flex justify-between">
+            <span class="text-[#71717a]">Primary Shards</span>
+            <span class="text-white">io_uring Block Engine</span>
+          </div>
+        </div>
+      </div>
+
+    </section>
+
+    <!-- Selected Work: Asymmetric Interactive Ledger (No 3-equal-box cliché) -->
+    <section id="work" class="py-16 space-y-8">
+      <div class="flex items-center justify-between">
+        <h2 class="text-base font-semibold tracking-tight text-white">
+          Selected Systems
+        </h2>
+        <div class="flex gap-1 p-1 bg-[#131416] border border-[#232528] rounded-lg text-xs font-mono">
+          <span class="px-3 py-1 rounded-md bg-[#232528] text-white">Production Systems</span>
+        </div>
+      </div>
+
+      <!-- Ledger List -->
+      <div class="divide-y divide-[#1e2023] border-y border-[#232528]">
+        
+        <!-- Row 1 -->
+        <article class="py-6 grid grid-cols-1 md:grid-cols-12 gap-4 items-baseline hover:bg-[#111214] px-3 -mx-3 rounded-lg transition-colors group">
+          <div class="md:col-span-2 text-xs font-mono text-[#71717a]">
+            2025
+          </div>
+          <div class="md:col-span-6 space-y-1">
+            <h3 class="text-sm font-medium text-white group-hover:text-emerald-400 transition-colors">
+              Atlas Key-Value Engine
+            </h3>
+            <p class="text-xs text-[#a1a1aa] leading-relaxed">
+              LSM-tree storage engine in Rust with io_uring disk pipelining and zero-copy reads.
+            </p>
+            <div class="flex gap-2 pt-2">
+              <span class="text-[10px] px-2 py-0.5 rounded bg-[#18191b] border border-[#232528] text-[#71717a]">Rust</span>
+              <span class="text-[10px] px-2 py-0.5 rounded bg-[#18191b] border border-[#232528] text-[#71717a]">Storage</span>
+              <span class="text-[10px] px-2 py-0.5 rounded bg-[#18191b] border border-[#232528] text-[#71717a]">Linux</span>
+            </div>
+          </div>
+          <div class="md:col-span-4 flex items-center justify-between md:justify-end gap-6 text-xs font-mono">
+            <span class="text-emerald-400">140k ops/sec</span>
+            <a href="https://github.com" target="_blank" class="text-[#71717a] group-hover:text-white transition-colors">Source -&gt;</a>
+          </div>
+        </article>
+
+        <!-- Row 2 -->
+        <article class="py-6 grid grid-cols-1 md:grid-cols-12 gap-4 items-baseline hover:bg-[#111214] px-3 -mx-3 rounded-lg transition-colors group">
+          <div class="md:col-span-2 text-xs font-mono text-[#71717a]">
+            2024
+          </div>
+          <div class="md:col-span-6 space-y-1">
+            <h3 class="text-sm font-medium text-white group-hover:text-emerald-400 transition-colors">
+              Pulse Edge Telemetry
+            </h3>
+            <p class="text-xs text-[#a1a1aa] leading-relaxed">
+              Distributed tracing aggregator handling 12M events/min with eBPF kernel probes.
+            </p>
+            <div class="flex gap-2 pt-2">
+              <span class="text-[10px] px-2 py-0.5 rounded bg-[#18191b] border border-[#232528] text-[#71717a]">Go</span>
+              <span class="text-[10px] px-2 py-0.5 rounded bg-[#18191b] border border-[#232528] text-[#71717a]">eBPF</span>
+              <span class="text-[10px] px-2 py-0.5 rounded bg-[#18191b] border border-[#232528] text-[#71717a]">Kafka</span>
+            </div>
+          </div>
+          <div class="md:col-span-4 flex items-center justify-between md:justify-end gap-6 text-xs font-mono">
+            <span class="text-emerald-400">0.4ms p99</span>
+            <a href="https://github.com" target="_blank" class="text-[#71717a] group-hover:text-white transition-colors">Source -&gt;</a>
+          </div>
+        </article>
+
+        <!-- Row 3 -->
+        <article class="py-6 grid grid-cols-1 md:grid-cols-12 gap-4 items-baseline hover:bg-[#111214] px-3 -mx-3 rounded-lg transition-colors group">
+          <div class="md:col-span-2 text-xs font-mono text-[#71717a]">
+            2024
+          </div>
+          <div class="md:col-span-6 space-y-1">
+            <h3 class="text-sm font-medium text-white group-hover:text-emerald-400 transition-colors">
+              Prism Schema Compiler
+            </h3>
+            <p class="text-xs text-[#a1a1aa] leading-relaxed">
+              Deterministic schema migration planner generating zero-downtime PostgreSQL DDL.
+            </p>
+            <div class="flex gap-2 pt-2">
+              <span class="text-[10px] px-2 py-0.5 rounded bg-[#18191b] border border-[#232528] text-[#71717a]">TypeScript</span>
+              <span class="text-[10px] px-2 py-0.5 rounded bg-[#18191b] border border-[#232528] text-[#71717a]">Postgres</span>
+              <span class="text-[10px] px-2 py-0.5 rounded bg-[#18191b] border border-[#232528] text-[#71717a]">AST</span>
+            </div>
+          </div>
+          <div class="md:col-span-4 flex items-center justify-between md:justify-end gap-6 text-xs font-mono">
+            <span class="text-emerald-400">2.1k Stars</span>
+            <a href="https://github.com" target="_blank" class="text-[#71717a] group-hover:text-white transition-colors">Source -&gt;</a>
+          </div>
+        </article>
+
+      </div>
+    </section>
+
+    <!-- Footer: Single line, minimal signature -->
+    <footer class="py-12 border-t border-[#232528] flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-[#71717a]">
+      <p>© 2026 Alex Mercer. Deterministic systems engineering.</p>
+      <div class="flex gap-6">
+        <a href="https://github.com" target="_blank" class="hover:text-white transition-colors">GitHub</a>
+        <a href="https://twitter.com" target="_blank" class="hover:text-white transition-colors">Twitter</a>
+        <a href="mailto:alex@mercer.dev" class="hover:text-white transition-colors">Email</a>
+      </div>
+    </footer>
+  </div>
+
+  <script>
+    // PRODUCTION-GRADE 3D DISCIPLINE (Engineered under compact-ui-designer)
+    // 1. Token-locked palette: #10b981 (nodes), #232528 (mesh links), #0c0d0e (background)
+    // 2. Prefers-reduced-motion: freezes animation loop immediately, renders clean static wireframe
+    // 3. IntersectionObserver: stops rendering loop when card is offscreen (preserves battery and frame rate)
+    // 4. Smooth spring damping (lerp) on mouse tracking
+
+    const canvas = document.getElementById('systems-3d-canvas');
+    const container = canvas.parentElement;
+    const perfBadge = document.getElementById('perf-badge');
+
+    const scene = new THREE.Scene();
+    scene.background = new THREE.Color(0x0c0d0e);
+
+    const camera = new THREE.PerspectiveCamera(40, container.clientWidth / container.clientHeight, 0.1, 100);
+    camera.position.set(0, 0, 4.2);
+
+    const renderer = new THREE.WebGLRenderer({ canvas, antialias: true, powerPreference: 'low-power' });
+    renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+    renderer.setSize(container.clientWidth, container.clientHeight);
+
+    // Build Distributed Raft Nodes Cluster
+    const clusterGroup = new THREE.Group();
+    scene.add(clusterGroup);
+
+    // 1. Icosahedron Frame (Lattice interconnects)
+    const geo = new THREE.IcosahedronGeometry(1.2, 1);
+    const wireMat = new THREE.MeshBasicMaterial({
+      color: 0x27282b,
+      wireframe: true,
+      transparent: true,
+      opacity: 0.8
+    });
+    const wireMesh = new THREE.Mesh(geo, wireMat);
+    clusterGroup.add(wireMesh);
+
+    // 2. Verified Emerald Nodes at Vertices
+    const vertexPositions = geo.attributes.position.array;
+    const nodeGeo = new THREE.SphereGeometry(0.045, 12, 12);
+    const nodeMat = new THREE.MeshBasicMaterial({ color: 0x10b981 });
+    const coreMat = new THREE.MeshBasicMaterial({ color: 0x34d399 });
+
+    for (let i = 0; i < vertexPositions.length; i += 9) {
+      const node = new THREE.Mesh(nodeGeo, nodeMat);
+      node.position.set(vertexPositions[i], vertexPositions[i+1], vertexPositions[i+2]);
+      clusterGroup.add(node);
+    }
+
+    // Central Primary Quorum Leader Node
+    const leaderNode = new THREE.Mesh(new THREE.SphereGeometry(0.12, 16, 16), coreMat);
+    clusterGroup.add(leaderNode);
+
+    // Mouse Parallax Physics
+    let targetX = 0, targetY = 0;
+    let isVisible = true;
+    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    container.addEventListener('mousemove', (e) => {
+      if (prefersReducedMotion) return;
+      const rect = container.getBoundingClientRect();
+      const x = (e.clientX - rect.left) / rect.width - 0.5;
+      const y = (e.clientY - rect.top) / rect.height - 0.5;
+      targetX = x * 1.5;
+      targetY = y * 1.5;
+    });
+
+    container.addEventListener('mouseleave', () => {
+      targetX = 0;
+      targetY = 0;
+    });
+
+    // Guardrail: Pause WebGL render loop when scrolled offscreen
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        isVisible = entry.isIntersecting;
+        if (!isVisible) {
+          perfBadge.textContent = "Paused (Offscreen)";
+          perfBadge.className = "absolute top-2 right-2 text-[10px] text-[#71717a] font-mono bg-[#131416]/90 px-2 py-0.5 rounded border border-[#27282b] pointer-events-none";
+        } else {
+          perfBadge.textContent = prefersReducedMotion ? "Static (Reduced Motion)" : "60 FPS • Throttled";
+          perfBadge.className = "absolute top-2 right-2 text-[10px] text-emerald-400 font-mono bg-[#131416]/90 px-2 py-0.5 rounded border border-[#27282b] pointer-events-none";
+        }
+      });
+    }, { threshold: 0.1 });
+    observer.observe(container);
+
+    // Animation Loop with smooth lerp
+    function animate() {
+      if (!isVisible) {
+        requestAnimationFrame(animate);
+        return;
+      }
+
+      if (!prefersReducedMotion) {
+        clusterGroup.rotation.y += 0.004;
+        clusterGroup.rotation.x += (targetY - clusterGroup.rotation.x) * 0.05;
+        clusterGroup.rotation.z += (targetX - clusterGroup.rotation.z) * 0.05;
+      }
+
+      renderer.render(scene, camera);
+      requestAnimationFrame(animate);
+    }
+
+    if (prefersReducedMotion) {
+      clusterGroup.rotation.set(0.4, 0.6, 0);
+      renderer.render(scene, camera);
+      perfBadge.textContent = "Static (Reduced Motion)";
+    } else {
+      animate();
+    }
+
+    // Responsive Canvas Resize
+    window.addEventListener('resize', () => {
+      camera.aspect = container.clientWidth / container.clientHeight;
+      camera.updateProjectionMatrix();
+      renderer.setSize(container.clientWidth, container.clientHeight);
+    });
+  </script>
+</body>
+</html>

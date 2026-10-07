@@ -1,0 +1,41 @@
+{
+  "name": "ui-pipeline",
+  "version": "1.0.0",
+  "description": "Production-grade 6-stage frontend UI/UX design pipeline skill for AI agents (Claude Code, Cursor, Antigravity, Gemini, Windsurf, Copilot)",
+  "main": "scripts/install.py",
+  "bin": {
+    "ui-pipeline": "./scripts/install.sh"
+  },
+  "scripts": {
+    "install:all": "python scripts/install.py --platform all",
+    "install:cursor": "python scripts/install.py --platform cursor",
+    "install:claude": "python scripts/install.py --platform claude",
+    "install:gemini": "python scripts/install.py --platform gemini",
+    "install:windsurf": "python scripts/install.py --platform windsurf",
+    "test": "python scripts/install.py --test"
+  },
+  "keywords": [
+    "ai-agent",
+    "cursor",
+    "claude-code",
+    "antigravity",
+    "gemini",
+    "windsurf",
+    "frontend-design",
+    "design-system",
+    "anti-slop",
+    "tailwind",
+    "radix-ui",
+    "shadcn"
+  ],
+  "author": "Kavinda Sooriyaarachchi (RK-Soori)",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/RK-Soori/ui-pipeline.git"
+  },
+  "bugs": {
+    "url": "https://github.com/RK-Soori/ui-pipeline/issues"
+  },
+  "homepage": "https://github.com/RK-Soori/ui-pipeline#readme"
+}

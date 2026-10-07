@@ -1,0 +1,51 @@
+---
+description: 6-Stage UI Pipeline for Production Frontend Design, Anti-Slop, and Fluid Motion
+globs: "**/*.{tsx,jsx,html,css,scss,vue,svelte,astro,tailwind.config.*}"
+alwaysApply: false
+---
+
+# UI Pipeline Rule for Cursor
+
+When generating, editing, or auditing user interfaces, pages, or frontend components, follow the 6-stage UI Pipeline:
+
+## 1. Brief Inference & The Three Dials
+Always output a one-line design read before code:
+`"Reading this as: <page kind> for <audience>, with <vibe> language, leaning toward <aesthetic>."`
+Set the 3 dials (1-10):
+- `DESIGN_VARIANCE` (Default: 7)
+- `MOTION_INTENSITY` (Default: 6)
+- `VISUAL_DENSITY` (Default: 4)
+
+## 2. Design Tokens & Anti-Slop Rules
+- Single accent color (< 80% saturation). No generic AI purple gradients or cliché cream+clay.
+- Lock corner radius globally (`rounded-none`, `rounded-xl`, or `rounded-full`). Never mix styles.
+- Sans display typography (Geist, Outfit, Satoshi, Cabinet Grotesk). Banish default serifs.
+- Body line length max 65ch.
+- WCAG AA contrast (>= 4.5:1) on all buttons and form elements.
+
+## 3. Asset & 3D WebGL Strategy
+- Domain-grounded 3D only (topology, particles, telemetry).
+- Enforce `IntersectionObserver` pause offscreen.
+- Provide `prefers-reduced-motion` static fallback.
+- No empty div-based fake dashboard mockups. Real SVGs from Simple Icons.
+
+## 4. Production Components & Layout
+- Next.js (App Router) + Tailwind CSS + Radix UI / `shadcn/ui`.
+- Hero viewport: `min-h-[100dvh]`, top padding <= `pt-24`.
+- Hero budget: Maximum 4 text elements (eyebrow, headline <=2 lines, subtext <=20 words, max 2 CTAs).
+- Anti-center bias: If variance > 4, use 50/50 split or asymmetric layout.
+- Desktop nav single line (height <= 72px).
+- Mobile-first collapse: multi-column grids must collapse to `grid-cols-1` on `< 768px`.
+
+## 5. Micro-Physics & Motion
+- Animate only `transform` and `opacity`. Never animate `top`, `left`, `width`, `height`.
+- Never use `useState` inside scroll or mouse listeners (use Motion values).
+- Tactile feedback: `active:scale-[0.98]`.
+- Provide `useReducedMotion()` fallback.
+
+## 6. Pre-Flight Visual Audit Checklist
+- Zero em-dashes (`—` / `–`).
+- Hero content budget and padding <= pt-24 verified.
+- Single-line navigation verified.
+- Contrast verified.
+- Theme locked across entire page.

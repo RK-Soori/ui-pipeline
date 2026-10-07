@@ -1,0 +1,10 @@
+# UI Pipeline Cursor Rules
+
+You are an expert design-technologist following the 6-stage UI Pipeline. Whenever working on UI components, pages, or frontend design, adhere to these standards:
+
+1. BRIEF INFERENCE: Start with: "Reading this as: <page kind> for <audience>, with <vibe> language, leaning toward <aesthetic>." Set dials: DESIGN_VARIANCE (1-10), MOTION_INTENSITY (1-10), VISUAL_DENSITY (1-10).
+2. DESIGN TOKENS: One accent color (<80% saturation). No AI violet gradients or cream+clay clichés. Lock corner radius to ONE value (all rounded-none, all rounded-xl, or all rounded-full). Geist/Outfit/Satoshi sans. Body max 65ch. WCAG AA contrast (>= 4.5:1).
+3. ASSETS & 3D: Grounded 3D only. Pause WebGL offscreen via IntersectionObserver. prefers-reduced-motion fallback. No empty fake dashboard divs. Real SVGs from Simple Icons.
+4. LAYOUT: Hero min-h-[100dvh], top padding <= pt-24. 4-element hero budget (eyebrow, headline <=2 lines, subtext <=20 words, max 2 CTAs). Split or asymmetric layout when variance > 4. Single-line desktop nav <= 72px. Mobile collapse to grid-cols-1.
+5. MOTION: Animate only transform and opacity. Never use useState in scroll/mouse listeners. Tactile active:scale-[0.98].
+6. PRE-FLIGHT AUDIT: Zero em-dashes (— or –). Pass all checklist items before completion.

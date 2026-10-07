@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Without Skill - Generic AI Portfolio (with AI 3D)</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+</head>
+<body class="min-h-screen bg-slate-950 text-white font-sans relative overflow-x-hidden">
+  <!-- Generic Blurred AI Purple Glow -->
+  <div class="absolute top-0 left-1/2 -translate-x-1/2 w-96 h-96 bg-purple-600/30 blur-[120px] rounded-full pointer-events-none"></div>
+
+  <!-- Nav with generic styling -->
+  <nav class="flex justify-between items-center p-6 border-b border-slate-800 max-w-6xl mx-auto relative z-10">
+    <span class="text-xl font-bold bg-gradient-to-r from-blue-400 to-purple-500 bg-clip-text text-transparent">
+      Alex Dev
+    </span>
+    <div class="space-x-6 text-slate-400 text-sm">
+      <a href="#about" class="hover:text-white transition-colors">About</a>
+      <a href="#skills" class="hover:text-white transition-colors">Skills</a>
+      <a href="#projects" class="hover:text-white transition-colors">Projects</a>
+      <a href="#contact" class="hover:text-white transition-colors">Contact</a>
+    </div>
+  </nav>
+
+  <!-- Hero: Generic Centered AI Cliché with unoptimized 3D floating object -->
+  <section class="py-20 text-center max-w-3xl mx-auto px-4 relative z-10">
+    <span class="px-4 py-1.5 rounded-full text-xs font-semibold bg-purple-500/10 text-purple-400 border border-purple-500/20 tracking-widest uppercase inline-block">
+      FULL-STACK WIZARD
+    </span>
+    
+    <!-- Uncalibrated 3D Element: Generic spinning neon shape with no purpose or theme fit -->
+    <div class="my-6 flex justify-center">
+      <div class="relative w-64 h-64 border border-purple-500/30 rounded-2xl bg-purple-950/20 p-2 shadow-2xl shadow-purple-500/20">
+        <canvas id="unoptimized-3d-canvas" class="w-full h-full rounded-xl"></canvas>
+        <span class="absolute bottom-2 left-1/2 -translate-x-1/2 text-[10px] text-purple-300 font-mono bg-purple-900/60 px-2 py-0.5 rounded-full">
+          Spinning 3D Shape (Unthrottled loop)
+        </span>
+      </div>
+    </div>
+
+    <h1 class="text-5xl font-extrabold tracking-tight mt-4 leading-normal">
+      Crafting Seamless Experiences — 
+      <span class="bg-gradient-to-r from-blue-400 via-purple-400 to-pink-500 bg-clip-text text-transparent">
+        One Line of Code at a Time
+      </span>
+    </h1>
+    <p class="mt-6 text-slate-400 text-lg">
+      I am a passionate software engineer dedicated to elevating digital landscapes through innovative solutions, robust architectures, and intuitive user experiences.
+    </p>
+    <div class="mt-8 flex justify-center gap-4">
+      <button class="px-8 py-3 rounded-full bg-gradient-to-r from-purple-500 to-blue-500 font-medium hover:opacity-90 shadow-lg shadow-purple-500/25">
+        Let's Connect Now
+      </button>
+      <button class="px-8 py-3 rounded-full border border-slate-700 text-slate-300 font-medium hover:bg-slate-900">
+        View My Resume
+      </button>
+    </div>
+  </section>
+
+  <!-- Section: The Classic "Three Identical Cards" Pattern -->
+  <section class="py-16 max-w-5xl mx-auto px-4 relative z-10">
+    <h2 class="text-2xl font-bold text-center mb-10">What I Do</h2>
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+      <div class="p-6 rounded-2xl bg-slate-900 border border-slate-800">
+        <div class="w-12 h-12 rounded-xl bg-purple-500/20 flex items-center justify-center text-purple-400 mb-4 text-xl">
+          💻
+        </div>
+        <h3 class="text-lg font-semibold">Frontend Development</h3>
+        <p class="text-slate-400 text-sm mt-2">
+          Transforming wireframes into responsive, interactive web applications using modern frameworks.
+        </p>
+      </div>
+      <div class="p-6 rounded-2xl bg-slate-900 border border-slate-800">
+        <div class="w-12 h-12 rounded-xl bg-blue-500/20 flex items-center justify-center text-blue-400 mb-4 text-xl">
+          ⚡
+        </div>
+        <h3 class="text-lg font-semibold">Backend Engineering</h3>
+        <p class="text-slate-400 text-sm mt-2">
+          Architecting scalable APIs, secure databases, and distributed cloud services for performance.
+        </p>
+      </div>
+      <div class="p-6 rounded-2xl bg-slate-900 border border-slate-800">
+        <div class="w-12 h-12 rounded-xl bg-pink-500/20 flex items-center justify-center text-pink-400 mb-4 text-xl">
+          🚀
+        </div>
+        <h3 class="text-lg font-semibold">DevOps & Cloud</h3>
+        <p class="text-slate-400 text-sm mt-2">
+          Streamlining CI/CD pipelines and deploying robust cloud infrastructures on AWS and Vercel.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Fake Placeholder Screenshots with Divs -->
+  <section class="py-16 max-w-5xl mx-auto px-4 pb-24 relative z-10">
+    <h2 class="text-2xl font-bold text-center mb-10">Featured Projects</h2>
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+      <div class="rounded-2xl overflow-hidden bg-slate-900 border border-slate-800 p-6">
+        <div class="w-full h-44 bg-slate-800 rounded-lg flex items-center justify-center text-slate-500 font-mono text-sm">
+          [Fake Screenshot Placeholder]
+        </div>
+        <h3 class="text-lg font-bold mt-4">SaaS Platform Alpha</h3>
+        <p class="text-slate-400 text-sm mt-1">An all-in-one AI platform to seamlessly empower developers.</p>
+      </div>
+      <div class="rounded-2xl overflow-hidden bg-slate-900 border border-slate-800 p-6">
+        <div class="w-full h-44 bg-slate-800 rounded-lg flex items-center justify-center text-slate-500 font-mono text-sm">
+          [Fake Screenshot Placeholder]
+        </div>
+        <h3 class="text-lg font-bold mt-4">Crypto Wallet Dashboard</h3>
+        <p class="text-slate-400 text-sm mt-1">Decentralized finance portal with modern analytics widgets.</p>
+      </div>
+    </div>
+  </section>
+
+  <script>
+    // Typical unoptimized AI 3D implementation:
+    // - Continuous render loop with no intersection observer (wastes GPU in background)
+    // - Ignores prefers-reduced-motion
+    // - Unmotivated multi-colored neon wires
+    const canvas = document.getElementById('unoptimized-3d-canvas');
+    const renderer = new THREE.WebGLRenderer({ canvas, alpha: true, antialias: true });
+    renderer.setSize(256, 256);
+
+    const scene = new THREE.Scene();
+    const camera = new THREE.PerspectiveCamera(45, 1, 0.1, 100);
+    camera.position.z = 4;
+
+    const geometry = new THREE.TorusKnotGeometry(0.8, 0.28, 100, 16);
+    const material = new THREE.MeshNormalMaterial({ wireframe: true });
+    const mesh = new THREE.Mesh(geometry, material);
+    scene.add(mesh);
+
+    function animate() {
+      requestAnimationFrame(animate);
+      mesh.rotation.x += 0.02;
+      mesh.rotation.y += 0.03;
+      renderer.render(scene, camera);
+    }
+    animate();
+  </script>
+</body>
+</html>

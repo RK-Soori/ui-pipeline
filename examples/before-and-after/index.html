@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>UI Design Comparison: Without Skill vs With ui-pipeline</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-slate-900 text-white h-screen flex flex-col font-sans overflow-hidden">
+  <!-- Top Control Bar -->
+  <header class="bg-slate-950 border-b border-slate-800 px-6 py-3 flex items-center justify-between z-20 shrink-0">
+    <div class="flex items-center gap-3">
+      <span class="text-xs uppercase tracking-widest font-bold px-2 py-1 rounded bg-indigo-500/20 text-indigo-400 border border-indigo-500/30">
+        Skill Audit
+      </span>
+      <h1 class="text-sm font-semibold text-slate-200">
+        Portfolio Comparison Viewer
+      </h1>
+    </div>
+
+    <!-- Toggle Controls -->
+    <div class="flex items-center gap-2 bg-slate-900 p-1 rounded-lg border border-slate-800 text-xs font-medium">
+      <button id="btn-split" onclick="setView('split')" class="px-3 py-1.5 rounded-md bg-indigo-600 text-white transition-all">
+        Side-by-Side (Split)
+      </button>
+      <button id="btn-without" onclick="setView('without')" class="px-3 py-1.5 rounded-md text-slate-400 hover:text-white transition-all">
+        ❌ Without Skill Only
+      </button>
+      <button id="btn-with" onclick="setView('with')" class="px-3 py-1.5 rounded-md text-slate-400 hover:text-white transition-all">
+        ✅ With Skill Only
+      </button>
+    </div>
+
+    <div class="text-xs text-slate-400 hidden sm:flex items-center gap-4">
+      <a href="without-skill.html" target="_blank" class="hover:text-indigo-400 underline">Open Without Skill</a>
+      <a href="with-skill.html" target="_blank" class="hover:text-emerald-400 underline">Open With Skill</a>
+    </div>
+  </header>
+
+  <!-- Viewport Area -->
+  <main class="flex-1 flex overflow-hidden relative">
+    
+    <!-- Left Pane: Without Skill -->
+    <div id="pane-without" class="flex-1 flex flex-col border-r border-slate-800 h-full transition-all duration-300">
+      <div class="bg-red-950/40 border-b border-red-900/40 px-4 py-2 flex items-center justify-between text-xs text-red-300 shrink-0">
+        <span class="font-semibold flex items-center gap-2">
+          <span class="w-2 h-2 rounded-full bg-red-500"></span>
+          WITHOUT SKILL (Generic AI Slop)
+        </span>
+        <span class="text-[11px] text-red-400/80">Purple gradient • Em-dashes • 3-card cliché • Pill buttons</span>
+      </div>
+      <iframe src="without-skill.html" class="w-full flex-1 border-0"></iframe>
+    </div>
+
+    <!-- Right Pane: With Skill -->
+    <div id="pane-with" class="flex-1 flex flex-col h-full transition-all duration-300">
+      <div class="bg-emerald-950/40 border-b border-emerald-900/40 px-4 py-2 flex items-center justify-between text-xs text-emerald-300 shrink-0">
+        <span class="font-semibold flex items-center gap-2">
+          <span class="w-2 h-2 rounded-full bg-emerald-400"></span>
+          WITH ui-pipeline SKILL
+        </span>
+        <span class="text-[11px] text-emerald-400/80">Linear aesthetic • Asymmetric split • Token locked • Micro-physics</span>
+      </div>
+      <iframe src="with-skill.html" class="w-full flex-1 border-0"></iframe>
+    </div>
+
+  </main>
+
+  <script>
+    function setView(mode) {
+      const pWithout = document.getElementById('pane-without');
+      const pWith = document.getElementById('pane-with');
+      const btnSplit = document.getElementById('btn-split');
+      const btnWithout = document.getElementById('btn-without');
+      const btnWith = document.getElementById('btn-with');
+
+      [btnSplit, btnWithout, btnWith].forEach(b => {
+        b.className = "px-3 py-1.5 rounded-md text-slate-400 hover:text-white transition-all";
+      });
+
+      if (mode === 'split') {
+        pWithout.style.display = 'flex';
+        pWith.style.display = 'flex';
+        pWithout.className = 'flex-1 flex flex-col border-r border-slate-800 h-full transition-all duration-300';
+        pWith.className = 'flex-1 flex flex-col h-full transition-all duration-300';
+        btnSplit.className = "px-3 py-1.5 rounded-md bg-indigo-600 text-white transition-all font-semibold";
+      } else if (mode === 'without') {
+        pWithout.style.display = 'flex';
+        pWith.style.display = 'none';
+        pWithout.className = 'w-full flex flex-col h-full transition-all duration-300';
+        btnWithout.className = "px-3 py-1.5 rounded-md bg-red-600 text-white transition-all font-semibold";
+      } else if (mode === 'with') {
+        pWithout.style.display = 'none';
+        pWith.style.display = 'flex';
+        pWith.className = 'w-full flex flex-col h-full transition-all duration-300';
+        btnWith.className = "px-3 py-1.5 rounded-md bg-emerald-600 text-white transition-all font-semibold";
+      }
+    }
+  </script>
+</body>
+</html>
